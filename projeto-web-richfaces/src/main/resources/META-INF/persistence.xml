@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	
+	<persistence-unit name="DefaulDS" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:jdbc/fmb</non-jta-data-source>
+		
+	<!-- Classes -->
+		<class>br.com.projeto.entidades.Cidade</class>
+		<class>br.com.projeto.entidades.Contato</class>
+		<class>br.com.projeto.entidades.Endereco</class>
+		<class>br.com.projeto.entidades.Estado</class>
+		<class>br.com.projeto.entidades.GrupoProduto</class>
+		<class>br.com.projeto.entidades.GrupoUsuario</class>
+		<class>br.com.projeto.entidades.ItemPedido</class>
+		<class>br.com.projeto.entidades.Pedido</class>
+		<class>br.com.projeto.entidades.Pessoa</class>
+		<class>br.com.projeto.entidades.PessoaFisica</class>
+		<class>br.com.projeto.entidades.PessoaJuridica</class>
+		<class>br.com.projeto.entidades.Produto</class>
+		<class>br.com.projeto.entidades.Telefone</class>
+		<class>br.com.projeto.entidades.Usuario</class>
+
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.use_sql_comments" value="false" />
+			<property name="hibernate.jdbc.wrap_result_sets" value="false" />
+			<property name="hibernate.search.lucene_version" value="LUCENE_CURRENT"/>
+			<property name="hibernate.hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>

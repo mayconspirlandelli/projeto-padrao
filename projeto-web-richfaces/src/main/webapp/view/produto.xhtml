@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="../templates/main.xhtml">
+	<ui:define name="conteudo">
+
+		<h:form id="frmProduto">
+			<!-- Listagem de itens -->
+			<a4j:outputPanel id="oppListar" ajaxRendered="true" rendered="true">
+
+			</a4j:outputPanel>
+
+
+			<!-- CREATE/UPDATE(INCLUIR/MANTER) -->
+			<a4j:outputPanel id="oppManter" ajaxRendered="true">
+
+			</a4j:outputPanel>
+
+			<!-- ModalPanel para excluir um item -->
+			<!-- http://docs.jboss.org/richfaces/nightly_4_0_X/Component_Reference/en-US/html/chap-Component_Reference-Panels.html#exam-Component_Reference-richpopupPanel-richpopupPanel_example -->
+			<!-- Se o conteúdo dentro do painel for muito grande utilize style="overflow:auto;" dentro da tag popupPanel. Ex.: <rich:popupPanel style="overflow:auto;"/> -->
+			<rich:popupPanel id="pnModalProduto" width="250" height="100"
+				resizeable="true" autosized="false">
+
+
+			</rich:popupPanel>
+
+		</h:form>
+
+
+
+	</ui:define>
+</ui:composition>
+
+</html>

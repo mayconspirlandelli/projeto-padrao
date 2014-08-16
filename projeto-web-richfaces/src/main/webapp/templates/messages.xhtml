@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:collapsiblePanel switchType="client" height="34px" style="margin-bottom:10px;" expanded="true">
+		<rich:messages errorClass="error" warnClass="warning" infoClass="info" id="msg" ajaxRendered="true" globalOnly="true">
+			<f:facet name="errorMarker">
+			<h:graphicImage library="images" name="icones/cross_circle_frame.png" style="padding-right: 10px" />
+			</f:facet>
+			<f:facet name="fatalMarker">
+				<h:graphicImage library="images" name="icones/cross_shield.png" style="padding-right: 10px" />
+			</f:facet>
+			<f:facet name="infoMarker">
+				<h:graphicImage library="images" name="icones/tick_circle_frame.png" style="padding-right: 10px" />
+			</f:facet>
+			<f:facet name="warnMarker">
+				<h:graphicImage  library="images" name="icones/exclamation.png" style="padding-right: 10px" />
+			</f:facet>
+		</rich:messages>
+	</rich:collapsiblePanel>
+</ui:composition>

@@ -1,0 +1,151 @@
+@CHARSET "ISO-8859-1";
+
+.wrap {
+	position: relative;
+	margin: 0 auto;
+	width: 800px;
+}
+
+#header,#footer,#nav {
+	width: 100%;
+	float: left;
+	padding: 15px 0;
+}
+
+#header {
+	background: #FFFFFF;
+}
+
+#nav {
+	background: #FFFFFF;
+}
+
+#header .logoDireita {
+	vertical-align:top;
+	float: left;
+	align: top;
+	width: 300px;
+}
+
+#header .logoEsquerda {
+	float: right;
+	vertical-align:top;
+	width: 300px;
+}
+
+#nav .menu {
+	float: left;
+	width: 400px;
+}
+
+#header .descricao{
+	vertical-align:text-bottom;
+	float: none;
+	width: 200px;
+	margin: 0;
+}
+
+#header p {
+	float: right;
+	width: 300px;
+	margin: 0;
+}
+
+#content {
+	padding: 15px 0;
+	clear: both;
+}
+
+#footer {
+	background: #87CEEB;
+	text-align: center;
+	color: #fff;
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+#footer a {
+	color: #fff;
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+#login-box {
+	width: 333px;
+	height: 352px;
+	padding: 58px 76px 0 76px;
+	color: #ebebeb;
+	font: 12px Arial, Helvetica, sans-serif;
+	background: url(../resources/images/login-box-backg.png) no-repeat left
+		top;
+}
+
+#login-box img {
+	border: none;
+}
+
+#login-box h2 {
+	padding: 0;
+	margin: 0;
+	color: #ebebeb;
+	font: bold 44px "Calibri", Arial;
+}
+
+#login-box-name {
+	float: left;
+	display: inline;
+	width: 80px;
+	text-align: right;
+	padding: 14px 10px 0 0;
+	margin: 0 0 7px 0;
+}
+
+#login-box-field {
+	float: left;
+	display: inline;
+	width: 230px;
+	margin: 0;
+	margin: 0 0 7px 0;
+}
+
+.form-login {
+	width: 205px;
+	padding: 10px 4px 6px 3px;
+	border: 1px solid #0d2c52;
+	background-color: #1e4f8a;
+	font-size: 16px;
+	color: #ebebeb;
+}
+
+.login-box-options {
+	clear: both;
+	padding-left: 87px;
+	font-size: 11px;
+}
+
+.login-box-options a {
+	color: #ebebeb;
+	font-size: 11px;
+}
+.btnPesquisar{
+	background-image: url(../resources/images/icoPesquisar.png)
+}
+
+.erro{
+	color: #C4220C;
+	font-size: 11px;
+	text-align: center;
+	vertical-align :middle;
+	padding: 14px 10px 0 0;
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+.nomeUsuario {
+	
+	color: #0066CC;
+	font-size: 11px;
+	text-align: right;
+	vertical-align :middle;
+	font-weight:bold;
+	font: 11px Arial, Helvetica, sans-serif;
+}
+
+/*Exemplo de layout: http://www.cssgirl.com/resources/2011/05/28/how-to-create-full-100-width-headerfooter-with-centered-content-updated/ */

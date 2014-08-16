@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+			<!-- ModalPanel-->
+			<!-- http://docs.jboss.org/richfaces/nightly_4_0_X/Component_Reference/en-US/html/chap-Component_Reference-Panels.html#exam-Component_Reference-richpopupPanel-richpopupPanel_example -->
+			<!-- Se o conteúdo dentro do painel for muito grande utilize style="overflow:auto;" dentro da tag popupPanel. Ex.: <rich:popupPanel style="overflow:auto;"/> -->
+		<a4j:outputPanel id="oppManterLogin" ajaxRendered="true" rendered="true">
+		<h:form>
+			<rich:popupPanel id="pnModalUsuario" width="500" height="400"
+				resizeable="true" autosized="false">
+				<f:facet name="header">
+					<h:panelGroup>
+						<h:outputText value="Manter Usuário"></h:outputText>
+					</h:panelGroup>
+				</f:facet>
+				<f:facet name="controls">
+					<h:panelGroup>
+						<h:graphicImage library="images" name="fechar_.png"
+							onclick="#{rich:component('pnModalUsuario')}.hide()">
+							<rich:componentControl target="pnModalUsuario" operation="hide"
+								event="onclick" />
+						</h:graphicImage>
+					</h:panelGroup>
+				</f:facet>
+
+
+				<rich:panel id="panelManter" style="with:200px;height:350px;">
+
+					<f:facet name="header">
+						<div style="height: 16px;">
+							<span style="width: 40%; text-align: left; float: left;">Usuário</span>
+						</div>
+					</f:facet>
+
+					<!-- Identificação do formulário -->
+					<fieldset>
+						<legend>Manutenção usuário:</legend>
+						<h:panelGrid columns="3">
+							<h:outputLabel for="grupoUsuario" value="Grupo do Usuário:" />
+							<h:selectOneMenu id="grupoUsuario"
+								value="#{usuarioControlador.bean.grupoUsuario}">
+								<f:selectItems value="#{usuarioControlador.listaGrupos}" />
+							</h:selectOneMenu>
+							<rich:message for="grupoUsuario" />
+
+							<h:outputLabel for="login" value="Login:" />
+							<h:inputText id="login" value="#{usuarioControlador.bean.login}"
+								required="true" requiredMessage="Insira um login válido"
+								size="40" maxlength="20" />
+							<rich:message for="login" />
+
+							<h:outputLabel for="nome" value="Nome:" />
+							<h:inputText id="nome" value="#{usuarioControlador.bean.nome}"
+								required="true" requiredMessage="Insira um nome válido"
+								size="40" />
+							<rich:message for="nome" />
+
+							<h:outputLabel for="senha" value="Senha:" />
+							<h:inputSecret id="senha"
+								value="#{usuarioControlador.bean.senha}" required="true"
+								requiredMessage="Informe a senha" size="40" />
+							<rich:message for="senha" />
+
+							<h:outputLabel for="confirmaSenha" value="Confirma Senha:" />
+							<h:inputSecret id="confirmaSenha"
+								value="#{usuarioControlador.bean.confirmaSenha}" required="true"
+								requiredMessage="Confirme a senha" size="40" />
+							<rich:message for="confirmaSenha" />
+
+						</h:panelGrid>
+						<br /> <span style="float: center; margin-right: 3px;">
+						<a4j:commandButton
+								action="#{usuarioControlador.manterLogin}"
+								render="oppListar,oppManter" value="Manter" 
+								onclick="#{rich:component('pnModalUsuario')}.hide()" />
+						</span>
+					</fieldset>
+				</rich:panel>
+			</rich:popupPanel>
+		</h:form>
+		</a4j:outputPanel>
+
+</ui:composition>

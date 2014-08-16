@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		<locale-config>
+			<default-locale>pt_BR</default-locale>
+			<supported-locale>pt_BR</supported-locale>
+		</locale-config>
+	</application>
+
+
+	<navigation-rule>
+		<from-view-id>/view/home.xhtml</from-view-id>
+
+		<navigation-case>
+			<from-action>#{menuControlador.pessoaFisica}</from-action>
+			<from-outcome>pessoaFisica</from-outcome>
+			<to-view-id>/view/pessoaFisica.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{menuControlador.pessoaJuridica}</from-action>
+			<from-outcome>pessoaJuridica</from-outcome>
+			<to-view-id>/view/pessoaJuridica.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{menuControlador.grupoUsuarios}</from-action>
+			<from-outcome>grupoUsuarios</from-outcome>
+			<to-view-id>/view/grupoUsuarios.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{menuControlador.usuarios}</from-action>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/view/usuarios.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{menuControlador.grupoProduto}</from-action>
+			<from-outcome>grupoProdutos</from-outcome>
+			<to-view-id>/view/grupoProdutos.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{menuControlador.produto}</from-action>
+			<from-outcome>produtos</from-outcome>
+			<to-view-id>/view/produto.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{menuControlador.estado}</from-action>
+			<from-outcome>estado</from-outcome>
+			<to-view-id>/view/estado.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{menuControlador.cidade}</from-action>
+			<from-outcome>cidade</from-outcome>
+			<to-view-id>/view/cidade.xhtml</to-view-id>
+		</navigation-case>
+	
+		<navigation-case>
+			<from-action>#{autenticacaoControlador.logout}</from-action>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+
+		<navigation-case>
+			<from-action>#{autenticacaoControlador.logon}</from-action>
+			<from-outcome>sucess</from-outcome>
+			<to-view-id>/view/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{autenticacaoControlador.logon}</from-action>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{autenticacaoControlador.logout}</from-action>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+
+
+		<navigation-case>
+			<from-action>#{autenticacaoControlador.logout}</from-action>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{autenticacaoControlador.logon}</from-action>
+			<from-outcome>sucess</from-outcome>
+			<to-view-id>/view/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+	</navigation-rule>
+
+	<!-- @link http://stackoverflow.com/questions/5416070/jsf-2-and-post-redirect-get -->
+	<!-- <application> -->
+	<!-- <navigation-handler> br.edu.fmb.projeto.util.RedirectNavigationHandler</navigation-handler> -->
+	<!-- </application> -->
+
+</faces-config>

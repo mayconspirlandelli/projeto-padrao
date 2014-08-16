@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#view#home.xhtml" PATH="/view/home.xhtml"
+  SHAPE="240,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#view#home.xhtml:0" NAME="item"
+   PATH="/view/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pessoaFisica:#{menuControlador.pessoaFisica}:#view#pessoaFisica.xhtml"
+    NAME="output" PATH="/view/pessoaFisica.xhtml"
+    TARGET="rules:#view#pessoaFisica.xhtml"
+    TITLE="#{menuControlador.pessoaFisica}:pessoaFisica" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="pessoaJuridica:#{menuControlador.pessoaJuridica}:#view#pessoaJuridica.xhtml"
+    NAME="output1" PATH="/view/pessoaJuridica.xhtml"
+    TARGET="rules:#view#pessoaJuridica.xhtml"
+    TITLE="#{menuControlador.pessoaJuridica}:pessoaJuridica" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="grupoUsuarios:#{menuControlador.grupoUsuarios}:#view#grupoUsuarios.xhtml"
+    NAME="output2" PATH="/view/grupoUsuarios.xhtml"
+    TARGET="rules:#view#grupoUsuarios.xhtml"
+    TITLE="#{menuControlador.grupoUsuarios}:grupoUsuarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="usuarios:#{menuControlador.usuarios}:#view#usuarios.xhtml"
+    NAME="output3" PATH="/view/usuarios.xhtml"
+    TARGET="rules:#view#usuarios.xhtml"
+    TITLE="#{menuControlador.usuarios}:usuarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="grupoProdutos:#{menuControlador.grupoProduto}:#view#grupoProdutos.xhtml"
+    NAME="output4" PATH="/view/grupoProdutos.xhtml"
+    TARGET="rules:#view#grupoProdutos.xhtml"
+    TITLE="#{menuControlador.grupoProduto}:grupoProdutos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="produtos:#{menuControlador.produto}:#view#produto.xhtml"
+    NAME="output5" PATH="/view/produto.xhtml"
+    TARGET="rules:#view#produto.xhtml"
+    TITLE="#{menuControlador.produto}:produtos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="estado:#{menuControlador.estado}:#view#estado.xhtml"
+    NAME="output6" PATH="/view/estado.xhtml"
+    TARGET="rules:#view#estado.xhtml"
+    TITLE="#{menuControlador.estado}:estado" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cidade:#{menuControlador.cidade}:#view#cidade.xhtml"
+    NAME="output7" PATH="/view/cidade.xhtml"
+    TARGET="rules:#view#cidade.xhtml"
+    TITLE="#{menuControlador.cidade}:cidade" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="logout:#{autenticacaoControlador.logout}:#login.xhtml"
+    NAME="output8" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
+    TITLE="#{autenticacaoControlador.logout}:logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="sucess:#{autenticacaoControlador.logon}:#view#home.xhtml"
+    NAME="output" PATH="/view/home.xhtml"
+    TARGET="rules:#view#home.xhtml"
+    TITLE="#{autenticacaoControlador.logon}:sucess" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="error:#{autenticacaoControlador.logon}:#login.xhtml"
+    NAME="output1" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
+    TITLE="#{autenticacaoControlador.logon}:error" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="logout:#{autenticacaoControlador.logout}:#login.xhtml"
+    NAME="output2" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
+    TITLE="#{autenticacaoControlador.logout}:logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#view#pessoaFisica.xhtml"
+  PATH="/view/pessoaFisica.xhtml" SHAPE="528,689,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#grupoUsuarios.xhtml"
+  PATH="/view/grupoUsuarios.xhtml" SHAPE="528,577,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#usuarios.xhtml"
+  PATH="/view/usuarios.xhtml" SHAPE="528,1009,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#pessoaJuridica.xhtml"
+  PATH="/view/pessoaJuridica.xhtml" SHAPE="528,897,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#grupoProdutos.xhtml"
+  PATH="/view/grupoProdutos.xhtml" SHAPE="560,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#estado.xhtml" PATH="/view/estado.xhtml"
+  SHAPE="560,465,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#cidade.xhtml" PATH="/view/cidade.xhtml"
+  SHAPE="560,353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#view#produto.xhtml"
+  PATH="/view/produto.xhtml" SHAPE="560,1025,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="96,1057,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="logout:#{autenticacaoControlador.logout}:#login.xhtml"
+    NAME="output2" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
+    TITLE="#{autenticacaoControlador.logout}:logout" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="sucess:#{autenticacaoControlador.logon}:#view#home.xhtml"
+    NAME="output1" PATH="/view/home.xhtml"
+    TARGET="rules:#view#home.xhtml"
+    TITLE="#{autenticacaoControlador.logon}:sucess" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

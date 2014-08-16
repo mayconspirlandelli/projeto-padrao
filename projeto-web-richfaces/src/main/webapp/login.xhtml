@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<title><ui:define name="title">Título da aplicação</ui:define></title>
+	<h:outputStylesheet library="css" name="template.css" />
+	<meta http-equiv="content-type" content="text/xhtml; charset=UTF-8" />
+</h:head>
+
+<h:body>
+
+	<a4j:outputPanel id="oppLogin" ajaxRendered="true" rendered="true">
+	<h:form id="formLogin">
+		<div align="center" style="padding: 100px 0 0 0px;">
+		<h2>FMB</h2>
+			<div id="login-box">
+				RichFaces 4, JSF 2.0, Maven 3.x, Hibernate 4.x<br /> <br />
+				<div id="login-box-name" style="margin-top: 20px;">Login:</div>
+				<div id="login-box-field" style="margin-top: 20px;">
+					<h:inputText name="login" styleClass="form-login" title="Usuário" size="30" maxlength="100" value="#{autenticacaoControlador.usuario.nome}" />
+				</div>
+				<div id="login-box-name">Senha:</div>
+				<div id="login-box-field">
+					<h:inputSecret name="senha" styleClass="form-login" title="Senha" size="30" maxlength="100" value="#{autenticacaoControlador.usuario.senha}" />
+				</div>
+
+				<br />
+				<span class="login-box-options">
+					<h:selectBooleanCheckbox name="lembrete" value="1">Lembrete</h:selectBooleanCheckbox>
+					
+<!-- 					<a4j:commandLink value="Novo Usuário" oncomplete="#{rich:component('pnModalUsuario')}.show()" ignoreDupResponses="true"> -->
+<!-- 						<h:graphicImage library="images" name="icones/people.png" /> -->
+<!-- 					</a4j:commandLink> -->
+
+				</span>
+				<br/>
+				<br/>
+				<div align="center">
+					<a4j:commandLink action="#{autenticacaoControlador.logon}" render="msg" >
+						<h:graphicImage library="images" name="login-btn.png" />
+				 	</a4j:commandLink>
+				<br/> 
+				<h:outputLabel id="msg" value="#{autenticacaoControlador.msg}"/>
+				</div>
+			</div>
+
+		</div>
+		</h:form>
+<!-- 			<ui:include src="/view/ManterLogin.xhtml"/> -->
+		</a4j:outputPanel>
+</h:body>
+</html>

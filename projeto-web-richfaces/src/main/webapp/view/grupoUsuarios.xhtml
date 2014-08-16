@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="../templates/main.xhtml">
+	
+	
+	<ui:define name="conteudo">
+		
+		<h:form id="frmGrupoUsuario">
+		
+			<!-- Listagem de itens -->
+			<a4j:outputPanel id="oppListar" ajaxRendered="true" rendered="true">
+				<rich:panel id="panelListar" rendered="#{grupoUsuarioControlador.acao eq 'MOSTRAR_TELA_INICIAL' || grupoUsuarioControlador.acao eq 'LISTAR'}">
+					<f:facet name="header">
+						<div style="height: 16px;">
+							<span style="width: 45%; text-align: left; float: left">Manter Grupo de Usuários</span>
+						</div>
+					</f:facet>
+					
+					<fieldset>
+						<legend>Pesquisar:</legend>
+						<span style="float: left; margin-right: 5px;">
+							<label for="idGrupo" style="float: left; margin-right: 3px;">IdGrupo</label>
+								<h:inputText
+									label="idGrupo" size="5" maxlength="9" alt="decimal"
+									value="#{grupoUsuarioControlador.bean.idPesquisa}" />
+						</span>
+						<span style="float: left; margin-right: 3px;">
+							<h:inputText
+								size="40" maxlength="60" alt="Descrição do grupo"
+								value="#{grupoUsuarioControlador.bean.descricaoPesquisa}" />
+						</span>
+						<span style="float: left; margin-right: 3px;">
+							<a4j:commandLink action="#{grupoUsuarioControlador.consultar}" render="oppListar,oppManter">
+								<h:graphicImage library="images" name="icones/icoPesquisar.png"/>
+							</a4j:commandLink>
+						</span>
+						<span style="float: right; margin-right: 3px;">
+							<a4j:commandButton
+								action="#{grupoUsuarioControlador.novo}"
+								render="oppListar,oppManter" value="Novo" />
+						</span>
+					</fieldset>
+					
+					<fieldset>
+								<legend>Listagem de Exemplos</legend>
+								
+								<h:outputText id="erro" styleClass="erro" value="Nenhum registro encontrado." rendered="#{empty grupoUsuarioControlador.lista}" />
+								
+								<h:panelGrid style="margin: 0 auto;" rules="2" width="100%" id="panelGrid"	>
+									<rich:dataTable
+										style="width:100%"
+										keepSaved="true"
+										id="dataTableGrupoUsuario"
+										var="item"
+										value="#{grupoUsuarioControlador.lista}"
+										rendered="#{not empty grupoUsuarioControlador.lista}"
+										rows="20">
+								
+									<f:facet name="header"><h:outputText value="Grupo(s) de Usuário(s)" /></f:facet>
+									
+									<rich:column sortBy="#{item.id}" sortOrder="descending">
+										<f:facet name="header"><h:outputText value="Código" /></f:facet>
+										<h:outputText value="#{item.id}">
+											<f:convertNumber pattern="00" />
+										</h:outputText>
+									</rich:column>
+		
+									<rich:column>
+										<f:facet name="header"><h:outputText value="Descrição" /></f:facet>
+										<h:outputText value="#{item.descricao}" />
+									</rich:column>
+		
+									<rich:column>
+										<f:facet name="header"><h:outputText value="Status" /></f:facet>
+										<h:outputText value="#{item.ativo ? 'Ativo' : 'Inativo'}" />
+									</rich:column>
+									
+									<rich:column style="text-align: center;">
+										<f:facet name="header"><h:outputText value="Ação" /></f:facet>
+										
+										<!-- botão edição -->
+										<span style="float: center; margin-right: 5px;">
+											<h:commandLink action="#{grupoUsuarioControlador.editar(item.id)}" immediate="true">
+												<h:graphicImage library="images" name="icones/pencil.png" />
+											</h:commandLink>
+										</span>
+										
+									<!-- Botão exclusão -->
+									<!--Quando o usuário clicar, iremos passar o item.id como parametro para o nosso -->
+									<!--controlador e setá-lo no backbean. Por seguinte é carregado a popup pnModalGrupoUsuario. -->
+									<!--Com isso quando o usuário acionar a opção excluir do popup o registro é excluído.  -->
+									<span style="float: center; margin-right: 5px;">
+											 <a4j:commandLink  oncomplete="#{rich:component('pnModalGrupoUsuario')}.show()" ignoreDupResponses="true">
+												<h:graphicImage library="images" name="icones/trash_delete.png" />
+												<f:setPropertyActionListener value="#{item.id}" target="#{grupoUsuarioControlador.bean.id}"/>
+											</a4j:commandLink>
+										</span>
+									</rich:column>
+									
+									</rich:dataTable>
+								</h:panelGrid>
+								<!-- Paginação rich:dataTable -->
+									<div id="paginacao" align="center">
+										<rich:dataScroller for="dataTableGrupoUsuario" maxPages="5" rendered="#{not empty grupoUsuarioControlador.lista and grupoUsuarioControlador.lista.size() > 20}" />
+									</div>
+					</fieldset>
+				</rich:panel>
+			</a4j:outputPanel>
+			
+			<!-- CREATE/UPDATE(INCLUIR/MANTER) -->
+			<a4j:outputPanel id="oppManter" ajaxRendered="true">
+				<rich:panel id="panelManter" style="with:200px;height:200px;"
+					rendered="#{grupoUsuarioControlador.acao eq 'INCLUIR' || grupoUsuarioControlador.acao eq 'MANTER'}">
+					
+					<f:facet name="header"><div style="height: 16px;">
+						<span style="width: 40%; text-align: left; float: left;">Exemplo</span></div>
+					</f:facet>
+					
+					<!-- Identificação do formulário -->
+					<fieldset>
+						<legend>Manutenção usuário:</legend>
+						<h:panelGrid columns="2">
+	
+							<h:outputLabel for="descricao" value="Descrição:" />
+							<h:inputText id="descricao" value="#{grupoUsuarioControlador.bean.descricao}" size="40" />
+	
+							<h:outputLabel for="ativo" value="Ativo:" />							
+							 <h:selectOneMenu id="ativo" value="#{grupoUsuarioControlador.bean.ativo}">
+                                    <f:selectItems value="#{grupoUsuarioControlador.status}" />
+                                </h:selectOneMenu>    
+	
+						</h:panelGrid><br />
+						
+						<span style="float: center; margin-right: 3px;">
+							<h:commandButton action="#{grupoUsuarioControlador.manter}" value="Manter"
+											 render="oppManter,oppListar" />
+						</span>
+						
+						<span style="float: center; margin-right: 3px;">
+							<a4j:commandButton value="Excluir" 
+											   action="#{grupoUsuarioControlador.excluir(grupoUsuarioControlador.bean.id)}"
+											   render="erro,oppListar,oppManter"/>
+						</span>
+						<span style="float: center; margin-right: 3px;">
+							<a4j:commandButton value="Voltar" action="#{grupoUsuarioControlador.voltar}"
+											   immediate="true" render="oppManter,oppListar" />
+						</span>
+					</fieldset>
+				</rich:panel>
+			</a4j:outputPanel>
+			
+			
+			<!-- ModalPanel para excluir um item -->
+			<!-- http://docs.jboss.org/richfaces/nightly_4_0_X/Component_Reference/en-US/html/chap-Component_Reference-Panels.html#exam-Component_Reference-richpopupPanel-richpopupPanel_example -->
+			<!-- Se o conteúdo dentro do painel for muito grande utilize style="overflow:auto;" dentro da tag popupPanel. Ex.: <rich:popupPanel style="overflow:auto;"/> -->
+			<rich:popupPanel id="pnModalGrupoUsuario" width="250" height="100" resizeable="true" autosized="false">
+					    <f:facet name="header">
+					        <h:panelGroup>
+					            <h:outputText value="Manter Grupo de Usuário"></h:outputText>
+					        </h:panelGroup>
+					    </f:facet>
+					    <f:facet name="controls">
+					        <h:panelGroup>
+					            <h:graphicImage library="images" name="fechar_.png" onclick="#{rich:component('pnModalGrupoUsuario')}.hide()">
+					            	<rich:componentControl target="pnModalGrupoUsuario" operation="hide" event="onclick"/>
+					            </h:graphicImage>
+					        </h:panelGroup>
+					    </f:facet>
+					  	
+					   	<h:panelGrid columns="2"  style="float: center;margin-left: 5px;">
+						   <h:graphicImage library="images" name="icones/icoExcluir.png" />
+						   <h:outputText value="Deseja excluir o registro?"/>
+						</h:panelGrid>
+						
+						
+						<h:form id="formExcluirGrupoUsuario">
+							  <h:panelGroup style="display:block; text-align:center">
+							  	<a4j:commandButton  action="#{grupoUsuarioControlador.excluir(grupoUsuarioControlador.bean.id)}"
+									value="Excluir" style="float: center;margin-left: 5px;"
+									render="frmGrupoUsuario,dataTableGrupoUsuario"
+									onclick="#{rich:component('pnModalGrupoUsuario')}.hide()"/>
+							                                       
+			                    <a4j:commandButton id="btnCancelar" action="#{grupoUsuarioControlador.voltar}"
+									value="Cancelar" style="float: center;margin-left: 5px;"
+									render="frmGrupoUsuario"
+									onclick="#{rich:component('pnModalGrupoUsuario')}.hide()"/>
+					         </h:panelGroup>
+			         	</h:form>				           
+				</rich:popupPanel>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

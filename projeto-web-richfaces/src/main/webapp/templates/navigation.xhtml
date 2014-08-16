@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	 <h:outputStylesheet>
+        .pic {
+        margin-bottom: -4px;
+        margin-right: 2px;
+        }
+ 
+        .search .rf-ddm-itm-sel {
+        background-color: transparent;
+        background-image:none;
+        border-color: transparent;
+        cursor: default;
+        }
+    </h:outputStylesheet>
+
+	<!-- Exemplo disponível em: -->
+	<!-- http://docs.jboss.org/richfaces/latest_3_3_X/en/devguide/html/rich_dropDownMenu.html -->
+<div align="right"><h:outputLabel styleClass="nomeUsuario" value="Seja bem vindo, #{autenticacaoControlador.usuarioLogado.nome}" /></div>
+	<div class="nav">
+			<!-- Barra do menu principal -->
+			<h:form>
+				<rich:toolbar height="26px">
+					<!-- menu coorporativo -->
+					<rich:dropDownMenu>
+						<f:facet name="label">
+							<h:panelGroup>
+								<h:graphicImage library="images" name="icones/manage.png" styleClass="pic" alt="copy" />
+								<h:outputText value="Coorporativo" />
+							</h:panelGroup>
+						</f:facet>
+						<rich:menuGroup label="Pessoa" icon="/resources/images/icones/people.png">
+							<rich:menuItem submitMode="ajax" label="Pessoa Física" action="pessoaFisica?faces-redirect=true" icon="/resources/images/icones/user_male_add.png"/>
+							<rich:menuItem submitMode="ajax" label="Pessoa Jurídica" action="pessoaJuridica?faces-redirect=true" icon="/resources/images/icones/business.png"/>
+						</rich:menuGroup>
+						<rich:menuGroup label="Regiões" icon="/resources/images/icones/Map-icon.png">
+							<rich:menuItem submitMode="ajax" label="Estado" action="#{menuControlador.estado}" icon="/resources/images/icones/Brazil-icon.png"/>
+							<rich:menuItem submitMode="ajax" label="Cidade" action="#{menuControlador.cidade}" icon="/resources/images/icones/cities.png"/>
+						</rich:menuGroup>
+						<rich:menuSeparator id="menuSeparator" />
+						<rich:menuItem label="Encerrar sessão" action="#{autenticacaoControlador.logout}" icon="/resources/images/icones/log_out.png" render="oppLogin" />
+					</rich:dropDownMenu>
+
+					<!-- menu sistema -->
+					
+					<rich:dropDownMenu>
+						<f:facet name="label">
+							<h:panelGroup>
+								<h:graphicImage library="images" name="icones/admin.png" styleClass="pic" alt="copy" />
+								<h:outputText value="Sistema" />
+							</h:panelGroup>
+						</f:facet>
+							<rich:menuItem submitMode="ajax" label="Grupo de Produtos" action="#{menuControlador.grupoProduto}" icon="/resources/images/icones/tag__pencil.png"/>
+							<rich:menuItem submitMode="ajax" label="Produtos" action="#{menuControlador.produto}" icon="/resources/images/icones/sticky_note__pencil.png"/>
+							<rich:menuItem submitMode="ajax" label="Pedido" action="#{menuControlador.pedido}" icon="/resources/images/icones/sales-report.png"/>
+					</rich:dropDownMenu>
+					
+
+					<!-- menu configurações -->
+					<rich:dropDownMenu>
+						<f:facet name="label">
+							<h:panelGroup>
+								<h:graphicImage library="images" name="icones/tools.png" styleClass="pic" alt="copy" />
+								<h:outputText value="Configurações" />
+							</h:panelGroup>
+						</f:facet>
+							<rich:menuItem submitMode="ajax" label="Grupo de Usuários" action="#{menuControlador.grupoUsuarios}" icon="/resources/images/icones/usergroups.png"/>
+							<rich:menuItem submitMode="ajax" label="Usuários" action="#{menuControlador.usuarios}" icon="/resources/images/icones/user.png"/>
+					</rich:dropDownMenu>
+
+				</rich:toolbar>
+			</h:form>
+	</div>
+</ui:composition>
